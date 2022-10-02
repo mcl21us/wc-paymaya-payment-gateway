@@ -281,7 +281,8 @@ class Cynder_Paymaya_Gateway extends WC_Payment_Gateway
 
    			 $product_name  = $item['name']; // The product name
     		 $item_qty      = $item['quantity']; // The quantity
-    		
+    		 $item_sku      = $item['sku'];
+		   
    			 $line_total     = $item['subtotal']; // or $item['line_subtotal'] -- The line item non discounted total
    			 $line_total_tax = $item['subtotal_tax']; // or $item['line_subtotal_tax'] -- The line item non discounted tax total
     		
@@ -361,14 +362,14 @@ class Cynder_Paymaya_Gateway extends WC_Payment_Gateway
             "items" => array(
                 array(
                     "name" =>   $product_name,
-                    "description" => $product_name,
+                    "description" => 'Payment',
                     "quantity" => $item_qty,
-                    "code" => $product_id,
-                    "amount" => array(
-                        "value" =>  $line_total
+                    "code" => '001',
+                   "amount" => array(
+                        "value" => floatval($line_total)
                     ),
                     "totalAmount" => array(
-                        "value" => $line_total2
+                        "value" => floatval($line_total2)
                     )
                 )
             ),
