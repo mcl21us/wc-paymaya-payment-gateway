@@ -1,5 +1,7 @@
 # Maya Business Plugin
 
+***WOOCOMMERCE FIX WITH ITEM/PRODUCTS NAME ON MAYA PAYMENT CHECKOUT***
+
 This is the repository of the official Maya Business payment gateway plugin
 
 ## Give your customers a better online checkout experience
