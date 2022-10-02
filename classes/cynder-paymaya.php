@@ -342,8 +342,8 @@ class Cynder_Paymaya_Gateway extends WC_Payment_Gateway
             ),
             "items" => array(
                 array(
-                    "name" => 'WooCommerce Purchase',
-                    "description" => 'WooCommerce Purchase',
+                    "name" =>  $order->get_name(),
+                    "description" => $order->get_name(),
                     "quantity" => 1,
                     "code" => '001',
                     "amount" => array(
