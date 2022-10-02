@@ -272,6 +272,24 @@ class Cynder_Paymaya_Gateway extends WC_Payment_Gateway
         $shippingCity = $order->get_shipping_city();
         $shippingZipCode = $order->get_shipping_postcode();
         $shippingCountry = $order->get_shipping_country();
+        
+        
+       foreach ($order->get_items() as $item_id => $item) {
+  
+			 $product_id    = $item['product_id']; // Get the product ID
+   			 $variation_id  = $item['variation_id']; // Get the variation ID
+
+   			 $product_name  = $item['name']; // The product name
+    		 $item_qty      = $item['quantity']; // The quantity
+    		
+   			 $line_total     = $item['subtotal']; // or $item['line_subtotal'] -- The line item non discounted total
+   			 $line_total_tax = $item['subtotal_tax']; // or $item['line_subtotal_tax'] -- The line item non discounted tax total
+    		
+    		 $line_total2     = $item['total']; // or $item['line_total'] -- The line item non discounted total
+    		 $line_total_tax2 = $item['total_tax']; // The line item non discounted tax total 
+  
+		}
+		
 
         if (empty($shippingCountry)) {
             $shippingCountry = $order->get_billing_country();
@@ -342,15 +360,15 @@ class Cynder_Paymaya_Gateway extends WC_Payment_Gateway
             ),
             "items" => array(
                 array(
-                    "name" =>  $order->get_name(),
-                    "description" => $order->get_name(),
-                    "quantity" => 1,
-                    "code" => '001',
+                    "name" =>   $product_name,
+                    "description" => $product_name,
+                    "quantity" => $item_qty,
+                    "code" => $product_id,
                     "amount" => array(
-                        "value" => floatval($order->get_total())
+                        "value" =>  $line_total
                     ),
                     "totalAmount" => array(
-                        "value" => floatval($order->get_total())
+                        "value" => $line_total2
                     )
                 )
             ),
